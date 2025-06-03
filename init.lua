@@ -13,38 +13,58 @@ Plug('ryanoasis/vim-devicons')
 Plug('talha-akram/noctis.nvim')
 Plug('preservim/nerdtree')
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })
-Plug('nvim-lualine/lualine.nvim')
+Plug('vim-airline/vim-airline')
+Plug('vim-airline/vim-airline-themes')
 Plug('windwp/nvim-autopairs')
+Plug('fladson/vim-kitty', { ['tag'] = '*' })
 
 vim.call('plug#end')
 
 vim.cmd('silent! colorscheme noctis')
 
 
+-- Vim Airline
+-- Tabline
+vim.g["airline#extensions#tabline#enabled"] = 1
+vim.g["airline#extensions#tabline#buffer_idx_mode"] = 1
+-- Powerline
+vim.g["airline_powerline_fonts"] = 1
+
 -- Set key map nvim
+
 -- Mở NERDTree và focus vào nó
-vim.api.nvim_set_keymap('n', '<leader>n', ':NERDTreeFocus<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F6>', ':NERDTreeFocus<CR>', { noremap = true, silent = true })
 
 -- Mở NERDTree
 vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTree<CR>', { noremap = true, silent = true })
 
 -- Toggle NERDTree (mở/đóng NERDTree)
-vim.api.nvim_set_keymap('n', '<C-t>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F5>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
 
 -- Tìm file hiện tại trong NERDTree
-vim.api.nvim_set_keymap('n', '<C-f>', ':NERDTreeFind<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-f>', ':NERDTree<CR>', { noremap = true, silent = true })
 
--- Lualine
-require('lualine').setup {
-    tabline = {
-        lualine_a = {'buffers'},
-        lualine_b = {'branch'},
-        lualine_c = {'filename'},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {'tabs'}
-    }
-}
+-- Close tab in tabline
+vim.api.nvim_set_keymap('n', '<C-w>', ':bdelete<CR>', { noremap = true, silent = true })
+
+-- Vim Airline keymap
+vim.api.nvim_set_keymap('n', '<leader>1', '<Plug>AirlineSelectTab1', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>2', '<Plug>AirlineSelectTab2', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>3', '<Plug>AirlineSelectTab3', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>4', '<Plug>AirlineSelectTab4', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>5', '<Plug>AirlineSelectTab5', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>6', '<Plug>AirlineSelectTab6', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>7', '<Plug>AirlineSelectTab7', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>8', '<Plug>AirlineSelectTab8', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>9', '<Plug>AirlineSelectTab9', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>0', '<Plug>AirlineSelectTab0', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F3>', '<Plug>AirlineSelectPrevTab', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F4>', '<Plug>AirlineSelectNextTab', { noremap = true, silent = true })
+
+
+-- Nvim-autopair
+require("nvim-autopairs").setup {}
+
 
 -- Nvim-autopair
 require("nvim-autopairs").setup {}
